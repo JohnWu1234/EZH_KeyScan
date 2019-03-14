@@ -18,6 +18,8 @@
  * Definitions
  ******************************************************************************/
 uint32_t ezh_stack[1];
+EZH_KeyScan_queue queue_1; 
+EZH_KeyScan_Para para;
 
 /*******************************************************************************
  * Prototypes
@@ -31,7 +33,6 @@ uint32_t ezh_stack[1];
  */
 int main(void)
 {
-    EZH_KeyScan_Para para;
     /* Init board hardware. */
     /* attach 12 MHz clock to FLEXCOMM0 (debug console) */
     CLOCK_AttachClk(BOARD_DEBUG_UART_CLK_ATTACH);	
@@ -48,6 +49,8 @@ int main(void)
 		NVIC_EnableIRQ(IOH_IRQn);
 	  EZH_Pin_Init();
     para.ezh_stack = (void *)ezh_stack;
+	  para.pos = &queue_1.ezh_write;
+	  para.p_buffer = (uint32_t *) queue_1.buf;
     EZH_Boot(EZH_KeyScan, &para, 0);
 	
     while (1)
@@ -55,5 +58,4 @@ int main(void)
         __WFI();
     }
 		
-		EZH_Deinit();
 }

@@ -33,8 +33,20 @@
 
 
 typedef struct _EZH_KeyScan_Para{
-    void *ezh_stack;
+    void		 *ezh_stack;
+		uint32_t *p_buffer;
+	  uint32_t *pos;
 } EZH_KeyScan_Para;
+
+typedef struct _EZH_KeyScan_queue{
+						uint32_t read;
+volatile		uint32_t buf[64];
+						uint32_t write;
+volatile		uint32_t ezh_write;
+} EZH_KeyScan_queue;
+
+
+
 void EZH_KeyScan(void);
 void EZH_Pin_Init(void);
 

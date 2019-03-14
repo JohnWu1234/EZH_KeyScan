@@ -28,7 +28,6 @@ void EZH_Init(void)
 
 void EZH_Boot(void * pProgram, void *pPara, uint32_t mask) 
 {
-    uint32_t ezh_code_size = 0;
 	
     LPC_EZH_ARCH_B0->EZHB_ARM2EZH = ((uint32_t)pPara | mask);
     LPC_EZH_ARCH_B0->EZHB_BOOT = (uint32_t) pProgram;
