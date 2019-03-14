@@ -107,6 +107,24 @@ kdown /* detect key down */
     E_LOAD_IMM(R1, 1)
     /* Scan 1st row */
     E_BSET_IMM(GPO, GPO, KEY_ROW_1)
+#if NEED_DELAY
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP	
+#endif
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_OR(NZ, R0, R0, R1) /* bit 0 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -118,6 +136,26 @@ kdown /* detect key down */
     E_BCLR_IMM(GPO, GPO, KEY_ROW_1)
 		/* Scan 2nd row */		
     E_BSET_IMM(GPO, GPO, KEY_ROW_2)
+		
+#if NEED_DELAY
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP	
+#endif	
+
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_LSL_OR(NZ, R0, R0, R1, 4) /* bit 4 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -129,6 +167,24 @@ kdown /* detect key down */
     E_BCLR_IMM(GPO, GPO, KEY_ROW_2)
 		/* Scan 3rd row */		
     E_BSET_IMM(GPO, GPO, KEY_ROW_3)
+#if NEED_DELAY
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP	
+#endif
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_LSL_OR(NZ, R0, R0, R1, 8) /* bit 8 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -139,7 +195,25 @@ kdown /* detect key down */
     E_COND_LSL_OR(NZ, R0, R0, R1, 11) /* bit 11 */
     E_BCLR_IMM(GPO, GPO, KEY_ROW_3)	
 		/* Scan 4th row */		
-    E_BSET_IMM(GPO, GPO, KEY_ROW_4)		
+    E_BSET_IMM(GPO, GPO, KEY_ROW_4)	
+#if NEED_DELAY
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP
+		E_NOP	
+#endif	
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_LSL_OR(NZ, R0, R0, R1, 12) /* bit 12 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
