@@ -65,7 +65,7 @@
 extern EZH_KeyScan_queue queue_1;
 extern EZH_KeyScan_Para para;
 
-volatile char keyvalue[64];
+volatile uint32_t keyvalue[64];
 
 /*******************************************************************************
  * Code
@@ -107,18 +107,6 @@ kdown /* detect key down */
     E_LOAD_IMM(R1, 1)
     /* Scan 1st row */
     E_BSET_IMM(GPO, GPO, KEY_ROW_1)
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_OR(NZ, R0, R0, R1) /* bit 0 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -130,18 +118,6 @@ kdown /* detect key down */
     E_BCLR_IMM(GPO, GPO, KEY_ROW_1)
 		/* Scan 2nd row */		
     E_BSET_IMM(GPO, GPO, KEY_ROW_2)
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_LSL_OR(NZ, R0, R0, R1, 4) /* bit 4 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -153,30 +129,6 @@ kdown /* detect key down */
     E_BCLR_IMM(GPO, GPO, KEY_ROW_2)
 		/* Scan 3rd row */		
     E_BSET_IMM(GPO, GPO, KEY_ROW_3)
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_LSL_OR(NZ, R0, R0, R1, 8) /* bit 8 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -187,20 +139,7 @@ kdown /* detect key down */
     E_COND_LSL_OR(NZ, R0, R0, R1, 11) /* bit 11 */
     E_BCLR_IMM(GPO, GPO, KEY_ROW_3)	
 		/* Scan 4th row */		
-    E_BSET_IMM(GPO, GPO, KEY_ROW_4)	
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		
+    E_BSET_IMM(GPO, GPO, KEY_ROW_4)		
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_LSL_OR(NZ, R0, R0, R1, 12) /* bit 12 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -220,12 +159,6 @@ kup  /* detect key up */
     E_LOAD_IMM(R3, 1)
     /* Scan 1st row */
     E_BSET_IMM(GPO, GPO, KEY_ROW_1)
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_OR(NZ, R2, R2, R3) 			 /* bit 0 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -237,12 +170,6 @@ kup  /* detect key up */
     E_BCLR_IMM(GPO, GPO, KEY_ROW_1)
 		/* Scan 2nd row */		
     E_BSET_IMM(GPO, GPO, KEY_ROW_2)
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_LSL_OR(NZ, R2, R2, R3, 4) /* bit 4 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -253,13 +180,7 @@ kup  /* detect key up */
     E_COND_LSL_OR(NZ, R2, R2, R3, 7) /* bit 7 */
     E_BCLR_IMM(GPO, GPO, KEY_ROW_2)
 		/* Scan 3rd row */		
-    E_BSET_IMM(GPO, GPO, KEY_ROW_3)
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP		
+    E_BSET_IMM(GPO, GPO, KEY_ROW_3)	
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_LSL_OR(NZ, R2, R2, R3, 8) /* bit 8 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -267,17 +188,10 @@ kup  /* detect key up */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_3)
     E_COND_LSL_OR(NZ, R2, R2, R3, 10) /* bit 10 */	
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_4)
-    E_COND_LSL_OR(NZ, R2, R2, R3, 11) /* bit 11 */
-		
+    E_COND_LSL_OR(NZ, R2, R2, R3, 11) /* bit 11 */		
     E_BCLR_IMM(GPO, GPO, KEY_ROW_3)	
 		/* Scan 4th row */		
-    E_BSET_IMM(GPO, GPO, KEY_ROW_4)	
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP
-		E_NOP		
+    E_BSET_IMM(GPO, GPO, KEY_ROW_4)		
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_1)
     E_COND_LSL_OR(NZ, R2, R2, R3, 12) /* bit 12 */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_2)
@@ -285,13 +199,12 @@ kup  /* detect key up */
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_3)
     E_COND_LSL_OR(NZ, R2, R2, R3, 14) /* bit 14 */	
     E_BTST_IMMS(GPI, GPI, KEY_COLUMN_4)
-    E_COND_LSL_OR(NZ, R2, R2, R3, 15) /* bit 15 */
-		
+    E_COND_LSL_OR(NZ, R2, R2, R3, 15) /* bit 15 */		
     E_BCLR_IMM(GPO, GPO, KEY_ROW_4)
 
 		E_MOVS(R2, R2)
 		E_COND_GOTO(ZE, to_int)	/* if key up, go to trigger ARM CORE */
-		E_GOTO(kup)	/* if still key down, continue to detect key up */
+		E_GOTO(kup)							/* if still key down, continue to detect key up */
 
 to_int
     E_STR(R6, R4, 0)    								//make pos = 0
@@ -299,16 +212,15 @@ to_int
     E_ADD_IMM(R4, R4, 1)								//R4 = R4+1
 		E_SUB_IMMS(R0, R4, 64)							//R0 = R4-64
 		E_COND_SUB_IMM(ZE, R5, R5, 256)     //if R4 == 64 ;R5=R5- 64 x 4
-		E_COND_XOR(ZE, R4, R4, R4) 					//if R4 == 64 ;R4=0		
-		
-		E_INT_TRIGGER(1234)	// notify app to update next foreground buffer address and fill count
+		E_COND_XOR(ZE, R4, R4, R4) 					//if R4 == 64 ;R4=0				
+		E_INT_TRIGGER(1234)									// notify app to update next foreground buffer address and fill count
 		E_GOTO(kdown)		
 }
 
 void IOH_IRQHandler(){
-		volatile int i=0;
+		volatile int i=0, j = 0;
 		volatile int count = 0;
-		PRINTF("IOH enter");
+		PRINTF("\r\n");
 	
 	
 //		PRINTF("queue_1.ezh_write: 0x%x \r\n",queue_1.ezh_write);
@@ -317,16 +229,20 @@ void IOH_IRQHandler(){
 	
 		if((queue_1.write & 0x3F) > (queue_1.read & 0x3F)){
 			count = (queue_1.write & 0x3F) - (queue_1.read & 0x3F);
-			for(i = 0; i < count; i++){				
-				keyvalue[i] = queue_1.buf[(queue_1.write & 0x3F)+i];	 
+			for(i = (queue_1.read & 0x3F), j = 0; i < (queue_1.write & 0x3F); i++, j++){				
+				keyvalue[j] = queue_1.buf[i];	 
 			}
 		}
 		
 		if((queue_1.write & 0x3F) < (queue_1.read & 0x3F)) {
-			count = (queue_1.write & 0x3F) + 64 - (queue_1.read & 0x3F);
-			for(i = 0; i < count; i++){				
-				keyvalue[i] = queue_1.buf[((queue_1.write & 0x3F)+i) & 0x3F];	 
+
+			for(i = queue_1.read, j = 0; i < 64; i++, j++){				
+				keyvalue[j] = queue_1.buf[i];	 
 			}
+			for(i = 0; i < queue_1.write; i++, j++){				
+				keyvalue[j] = queue_1.buf[i];	 
+			}
+			count = (64 - (queue_1.read & 0x3F) + (queue_1.write & 0x3F) );
 		}
 		
 		for(i = 0 ;i < count; i++ ){
