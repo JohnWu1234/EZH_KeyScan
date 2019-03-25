@@ -1,0 +1,79 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.25.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: John Wu, NXP, LIC=UB446-XXDS4-NWJAC-Q0N03-8KHDN-E6BA1
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.25.2.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.25.2.0
+Dialog DLL:      DARMCM1.DLL V1.19.1.0
+Target DLL:      CMSIS_AGDI.dll V1.29.10.0
+Dialog DLL:      TARMCM1.DLL V1.14.0.0
+ 
+<h2>Project:</h2>
+C:\Work\LPC\LPC51U68\EZH_keyscan\EZH_KeyScan\EZH_key_scan_96MHz\EZH_key_scan.uvprojx
+Project File Date:  03/14/2019
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'EZH_key_scan debug'
+compiling board.c...
+compiling pin_mux.c...
+compiling clock_config.c...
+compiling serial_port_uart.c...
+compiling serial_manager.c...
+compiling generic_list.c...
+compiling system_LPC51U68.c...
+compiling usart_adapter.c...
+compiling fsl_clock.c...
+compiling fsl_common.c...
+compiling fsl_flexcomm.c...
+compiling fsl_gpio.c...
+compiling fsl_reset.c...
+compiling fsl_power.c...
+compiling fsl_usart.c...
+compiling fsl_ezhb.c...
+compiling hello_world.c...
+source/hello_world.c(53): warning:  #513-D: a value of type "volatile uint32_t *" cannot be assigned to an entity of type "uint32_t *"
+  	  para.pos = &queue_1.ezh_write;
+source/hello_world.c: 1 warning, 0 errors
+assembling startup_LPC51U68.s...
+compiling fsl_assert.c...
+compiling ezh_key_scan.c...
+compiling fsl_debug_console.c...
+compiling fsl_str.c...
+linking...
+Program Size: Code=9876 RO-data=484 RW-data=56 ZI-data=2676  
+After Build - User command #1: C:\Keil_v5\/ARM/BIN/ElfDwT.exe debug\EZH_key_scan.out BASEADDRESS(0x0)
+ELFDWT - Signature Creator V1.4.0.0
+COPYRIGHT Copyright (C) 2014-2018, ARM Ldt. and  ARM Germany GmbH
+*** Updated Signature over Range[32] (0x00000000 - 0x00000018): @0x0000001C = 0xDFFEFD6F
+*** Processing completed, no Errors.
+"debug\EZH_key_scan.out" - 0 Error(s), 1 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: NXP
+                http://mcuxpresso.nxp.com/cmsis_pack/repo/NXP.LPC51U68_DFP.11.0.0.pack
+                NXP.LPC51U68_DFP.11.0.0
+                Device Family Pack for LPC51U68
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_EZH_key_scan_debug
+  C:\Keil_v5\ARM\PACK\NXP\LPC51U68_DFP\11.0.0
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:11
+</pre>
+</body>
+</html>

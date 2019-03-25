@@ -1,0 +1,10 @@
+debug\system_lpc51u68.o: device/system_LPC51U68.c
+debug\system_lpc51u68.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+debug\system_lpc51u68.o: device/fsl_device_registers.h
+debug\system_lpc51u68.o: device/LPC51U68.h
+debug\system_lpc51u68.o: CMSIS\core_cm0plus.h
+debug\system_lpc51u68.o: CMSIS\cmsis_version.h
+debug\system_lpc51u68.o: CMSIS\cmsis_compiler.h
+debug\system_lpc51u68.o: CMSIS\cmsis_armcc.h
+debug\system_lpc51u68.o: device/system_LPC51U68.h
+debug\system_lpc51u68.o: device/LPC51U68_features.h
